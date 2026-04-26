@@ -1,73 +1,236 @@
-body {
-    font-family: Arial, sans-serif;
-    line-height: 1.6;
-    margin: 0;
-    padding: 0;
-    background-color: #f4f4f4;
-    color: #333;
-    text-align: right;
-}
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>אלישבע פריצקי | אומנות השיער והאיפור</title>
+<link href="https://fonts.googleapis.com/css2?family=Assistant:wght@300;400;600&family=Cormorant+Garamond:ital,wght@0,300;0,500;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg-black: #000000;
+    --card-dark: #0a0a0a;
+    --primary-pink: #f2cece; /* ורוד עדין */
+    --hot-pink: #e8b4b8;     /* ורוד נוכח */
+    --rose-gold: #c9908a;    /* זהב אדום */
+    --text-light: #fdf0f0;   /* טקסט ורדרד-לבן לקריאות */
+  }
 
-header {
-    background: #5d4037;
-    color: #fff;
-    padding: 2rem 0;
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Assistant', sans-serif;
+    background: var(--bg-black);
+    color: var(--text-light);
+    line-height: 1.7;
+    overflow-x: hidden;
+  }
+
+  h1, h2, h3, .nav-logo {
+    font-family: 'Cormorant Garamond', serif;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed; top: 0; width: 100%; z-index: 1000;
+    padding: 15px 5%;
+    display: flex; justify-content: space-between; align-items: center;
+    background: rgba(0, 0, 0, 0.95);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(242, 206, 206, 0.1);
+  }
+  .nav-logo {
+    font-size: 1.6rem; font-style: italic; font-weight: 600;
+    color: var(--primary-pink); text-decoration: none;
+  }
+  .nav-actions { display: flex; gap: 10px; }
+  .btn-nav {
+    padding: 8px 18px; border-radius: 50px; font-size: 0.85rem;
+    text-decoration: none; transition: 0.3s;
+  }
+  .btn-catalog-nav { border: 1px solid var(--primary-pink); color: var(--primary-pink); }
+  .btn-appointment-nav { background: var(--primary-pink); color: #000; font-weight: 600; }
+
+  /* ── HERO ── */
+  .hero {
+    height: 100vh;
+    display: flex; align-items: center; justify-content: center;
+    padding: 0 5%;
+    background: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.8)), url('https://images.unsplash.com/photo-1522337660859-02fbefca4702?w=1600&q=80');
+    background-size: cover; background-position: center;
     text-align: center;
-}
+  }
+  .hero-content { max-width: 800px; animation: fadeIn 1.2s ease; }
+  .hero-eyebrow {
+    font-size: 0.9rem; letter-spacing: 4px; text-transform: uppercase;
+    color: var(--rose-gold); margin-bottom: 15px;
+  }
+  .hero-title {
+    font-size: clamp(3rem, 8vw, 5.5rem);
+    line-height: 1; color: var(--primary-pink); margin-bottom: 25px; font-weight: 300;
+  }
+  .hero-title em { color: var(--text-light); font-style: italic; }
+  .hero-btns { display: flex; gap: 15px; justify-content: center; flex-wrap: wrap; }
+  .hero-btn {
+    padding: 15px 35px; text-decoration: none; border-radius: 2px;
+    transition: 0.4s; font-size: 1rem; letter-spacing: 1px;
+  }
+  .btn-main { background: var(--primary-pink); color: #000; font-weight: 600; }
+  .btn-outline { border: 1px solid var(--primary-pink); color: var(--primary-pink); }
+  .hero-btn:hover { transform: translateY(-3px); box-shadow: 0 5px 20px rgba(242, 206, 206, 0.2); }
 
-header h1 {
-    margin: 0;
-    font-size: 2.5rem;
-}
+  /* ── SECTIONS ── */
+  section { padding: 100px 5%; }
+  .section-header { text-align: center; margin-bottom: 70px; }
+  .section-tag { color: var(--rose-gold); font-size: 0.8rem; letter-spacing: 3px; margin-bottom: 10px; }
+  .section-title { font-size: 3rem; font-weight: 300; color: var(--primary-pink); }
 
-.hero-section img {
-    width: 100%;
-    height: auto;
-    display: block;
-}
+  /* ── SERVICES ── */
+  .services-grid {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px;
+  }
+  .service-card {
+    background: var(--card-dark); padding: 50px 30px; text-align: center;
+    border: 1px solid rgba(242, 206, 206, 0.05); transition: 0.4s;
+  }
+  .service-card:hover { border-color: var(--primary-pink); transform: scale(1.02); }
+  .service-card h3 { font-size: 2rem; margin-bottom: 15px; color: var(--hot-pink); }
+  .service-card p { color: #a0a0a0; }
+  .service-icon { font-size: 2.5rem; margin-bottom: 20px; display: block; }
 
-.services-section, .contact-section {
-    padding: 2rem;
-    max-width: 800px;
-    margin: 2rem auto;
-    background: #fff;
-    border-radius: 8px;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-}
+  /* ── GALLERY ── */
+  .gallery-grid {
+    display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px;
+  }
+  .gallery-item { height: 350px; overflow: hidden; border: 1px solid rgba(242,206,206,0.1); }
+  .gallery-item img { width: 100%; height: 100%; object-fit: cover; transition: 0.6s; opacity: 0.7; }
+  .gallery-item:hover img { transform: scale(1.1); opacity: 1; }
 
-.services-section ul {
-    list-style: none;
-    padding: 0;
-}
+  /* ── CONTACT ── */
+  .contact-container {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 60px;
+    background: var(--card-dark); padding: 60px; border-radius: 4px;
+    border: 1px solid rgba(242, 206, 206, 0.1);
+  }
+  .form-input, textarea {
+    width: 100%; padding: 15px; margin-bottom: 15px;
+    background: #111; border: 1px solid #222; color: #fff;
+  }
+  .submit-btn {
+    background: var(--primary-pink); color: #000; border: none;
+    padding: 18px; width: 100%; cursor: pointer; transition: 0.3s; font-size: 1rem; font-weight: 600;
+  }
+  .submit-btn:hover { background: var(--text-light); }
 
-.services-section li {
-    background: #e0e0e0;
-    margin-bottom: 0.5rem;
-    padding: 1rem;
-    border-radius: 4px;
-}
+  /* ── FLOATERS ── */
+  .wa-float {
+    position: fixed; bottom: 30px; left: 30px;
+    background: #25d366; width: 60px; height: 60px;
+    border-radius: 50%; display: flex; align-items: center; justify-content: center;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.5); z-index: 1000;
+  }
 
-.cta-button {
-    display: block;
-    width: fit-content;
-    margin: 0 auto;
-    padding: 1rem 2rem;
-    background: #ff5722;
-    color: #fff;
-    text-decoration: none;
-    border-radius: 5px;
-    font-size: 1.2rem;
-    font-weight: bold;
-}
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
 
-.cta-button:hover {
-    background: #e64a19;
-}
+  @media (max-width: 900px) {
+    .gallery-grid { grid-template-columns: repeat(2, 1fr); }
+    .contact-container { grid-template-columns: 1fr; padding: 30px; }
+  }
+</style>
+</head>
+<body>
 
-footer {
-    text-align: center;
-    padding: 1rem 0;
-    background: #333;
-    color: #fff;
-    margin-top: 2rem;
-}
+<nav>
+  <a href="#" class="nav-logo">Elisheva Paritzky</a>
+  <div class="nav-actions">
+    <a href="#contact" class="btn-nav btn-catalog-nav">קבלת קטלוג</a>
+    <a href="tel:0548571666" class="btn-nav btn-appointment-nav">קבעי תור</a>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="hero-content">
+    <p class="hero-eyebrow">Professional Hair & Makeup Artist</p>
+    <h1 class="hero-title">היופי שלך, <br><em>האומנות שלי.</em></h1>
+    <p style="font-size: 1.2rem; margin-bottom: 40px; color: var(--hot-pink); font-weight: 300;">בוגרת נחמי גרוסמן | עיצוב שיער, איפור וסדנאות מקצועיות</p>
+    <div class="hero-btns">
+        <a href="tel:0548571666" class="hero-btn btn-main">תיאום תור 📞</a>
+        <a href="#contact" class="hero-btn btn-outline">לקבלת הקטלוג ✨</a>
+    </div>
+  </div>
+</section>
+
+<section id="services">
+  <div class="section-header">
+    <p class="section-tag">SERVICES</p>
+    <h2 class="section-title">השירותים שלי</h2>
+  </div>
+  <div class="services-grid">
+    <div class="service-card">
+      <span class="service-icon">💇‍♀️</span>
+      <h3>עיצוב שיער</h3>
+      <p>תסרוקות ערב וכלה בסטייל נקי, מודרני ויוקרתי.</p>
+    </div>
+    <div class="service-card">
+      <span class="service-icon">💄</span>
+      <h3>איפור מקצועי</h3>
+      <p>איפור עמיד וזוהר המותאם אישית לתווי הפנים שלך.</p>
+    </div>
+    <div class="service-card">
+      <span class="service-icon">🎓</span>
+      <h3>קורסים וסדנאות</h3>
+      <p>לימודי טכניקות איפור ושיער למקצועיות ולנשים שרוצות לדעת יותר.</p>
+    </div>
+  </div>
+</section>
+
+<section id="gallery">
+  <div class="section-header">
+    <p class="section-tag">PORTFOLIO</p>
+    <h2 class="section-title">גלריית עבודות</h2>
+  </div>
+  <div class="gallery-grid">
+    <div class="gallery-item"><img src="IMG_0583.jpeg" alt="עבודה"></div>
+    <div class="gallery-item"><img src="IMG_0594.jpeg" alt="עבודה"></div>
+    <div class="gallery-item"><img src="IMG_0628.jpeg" alt="עבודה"></div>
+    <div class="gallery-item"><img src="https://images.unsplash.com/photo-1526045612212-70caf35c14df?w=500" alt="עבודה"></div>
+    <div class="gallery-item"><img src="https://images.unsplash.com/photo-1560869713-7d0a29430803?w=500" alt="עבודה"></div>
+    <div class="gallery-item"><img src="https://images.unsplash.com/photo-1516914943479-89db7d9ae7f2?w=500" alt="עבודה"></div>
+    <div class="gallery-item"><img src="https://images.unsplash.com/photo-1457972729786-0411a8b27243?w=500" alt="עבודה"></div>
+    <div class="gallery-item"><img src="https://images.unsplash.com/photo-1522337660859-02fbefca4702?w=500" alt="עבודה"></div>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="contact-container">
+    <div>
+      <h2 class="section-title" style="font-size: 2.5rem;">בואי נדבר</h2>
+      <p style="margin: 20px 0; color: var(--hot-pink);">השאירי פרטים לקבלת הצעת מחיר או קטלוג קורסים מלא ישירות אלייך.</p>
+      <div style="font-size: 1.1rem; color: #a0a0a0;">
+        <p>📍 ירושלים והסביבה</p>
+        <p>📞 054-8571666</p>
+        <p>✉️ e0548571666@gmail.com</p>
+      </div>
+    </div>
+    <form>
+      <input type="text" class="form-input" placeholder="שם מלא" required>
+      <input type="tel" class="form-input" placeholder="מספר טלפון" required>
+      <textarea rows="4" placeholder="איך אוכל לעזור לך? (איפור / קורס / קטלוג)"></textarea>
+      <button type="submit" class="submit-btn">שלחי לי הודעה</button>
+    </form>
+  </div>
+</section>
+
+<footer style="text-align: center; padding: 50px; color: var(--rose-gold); border-top: 1px solid #111;">
+  <div style="font-family: 'Cormorant Garamond', serif; font-size: 1.5rem; margin-bottom: 10px; color: var(--primary-pink);">Elisheva Paritzky</div>
+  <p>© 2024 כל הזכויות שמורות לאלישבע פריצקי</p>
+</footer>
+
+<a href="https://wa.me/9720548571666" class="wa-float" target="_blank">
+  <svg width="30" height="30" fill="white" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+</a>
+
+</body>
+</html>
